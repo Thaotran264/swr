@@ -1,6 +1,6 @@
-html,
-body {
+* {
   padding: 0;
+  box-sizing: border-box;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -11,14 +11,17 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+
+:disabled {
+  transition: all .75s ease-in;
+  opacity: 0.3;
 }
 
 @import url('./header.css');
 @import url('./page.css');
 @import url('./card.css');
 @import url('./loading.css');
+@import url('./user.css');
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
