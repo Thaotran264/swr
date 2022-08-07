@@ -70,7 +70,7 @@ const Header = () => {
             </button>
             <span>{page}</span>
             <button
-              disabled={pathname !== "/" || isLoading || !users.length}
+              disabled={pathname !== "/" || isLoading || !users?.length}
               onClick={() => handlePagination(page + 1)}
             >
               +

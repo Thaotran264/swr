@@ -1,8 +1,10 @@
+import axios from "axios";
 import Head from "next/head";
+import InputForm from "../components/InputForm";
 import Page from "../components/Page";
 import { getQueryUrl } from "../utils/getQueryUrl";
 
-export default function Home() {
+export default function Home({ initUser }) {
   const { page, limit, search } = getQueryUrl();
   return (
     <div>
@@ -12,14 +14,37 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div style={{ display: "none" }}>
-          <Page page={page - 1} limit={limit} search={search} />
+        <div style={{ width: 1080, margin: "0 auto" }}>
+          <InputForm />
         </div>
-        <Page page={page} limit={limit} search={search} />
         <div style={{ display: "none" }}>
-          <Page page={page + 1} limit={limit} search={search} />
+          <Page
+            initUser={initUser}
+            page={page - 1}
+            limit={limit}
+            search={search}
+          />
+        </div>
+        <Page initUser={initUser} page={page} limit={limit} search={search} />
+        <div style={{ display: "none" }}>
+          <Page
+            initUser={initUser}
+            page={page + 1}
+            limit={limit}
+            search={search}
+          />
         </div>
       </main>
     </div>
   );
+}
+export async function getStaticProps() {
+  let url = "/users?_sort=createdAt&_order=asc";
+  const res = await axios.get(url);
+  return {
+    props: {
+      initUser: res.data,
+    },
+    revalidate: 60,
+  };
 }

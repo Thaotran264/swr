@@ -5,6 +5,7 @@
     box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
     cursor: pointer;
     transition: all .2s linear;
+    position: relative;
 }
 
 .card img {
@@ -16,7 +17,63 @@
     display: block;
 }
 
+.card h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px 0;
+}
+
 .card:hover {
     box-shadow: 2px 8px 20px #0004;
     transform: translate3D(0, -3px, 0);
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    /* transform: translate(-50%, -50%); */
+    opacity: 0;
+    border-radius: 5px;
+    transition: opacity 1s ease;
+    background-color: rgba(0, 0, 0, .35);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 1px solid #fff;
+    outline: none;
+    margin: 5px;
+    color: #fff;
+    text-transform: capitalize;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: transparent;
+    transition: all .25s ease;
+}
+
+.btn-delete {
+    border-color: red;
+    color: red;
+}
+
+.btn-delete:hover,
+.btn-edit:hover {
+    opacity: 0.8;
+    background-color: #fff;
+}
+
+.btn-edit {
+    border-color: orange;
+    color: orange;
+}
+
+.card:hover .menu {
+    opacity: 1;
 }
